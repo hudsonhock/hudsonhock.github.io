@@ -3,7 +3,7 @@
 Source: https://amiable-volunteers-088828.framer.app
 Mode: full-site
 Pages: 1
-Assets: 76
+Assets: 73
 
 ## Structure
 
