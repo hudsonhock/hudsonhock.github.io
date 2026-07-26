@@ -132,51 +132,39 @@ n.innerHTML='<style>#ncx-local-notice{position:fixed;left:50%;bottom:18px;transf
 	<script>
 document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListener('submit', function(e) {
   e.preventDefault();
-
   var email = this.querySelector('input[type="email"]').value;
   if (!email) return;
-
+  
   var btn = this.querySelector('button[type="submit"]');
-	
-  function applyFont(button) {
-	button.style.minWidth = capturedWidth;
-	button.style.whiteSpace = 'nowrap';
-	button.style.fontFamily = '"Cormorant SC", serif';
-	button.style.fontSize = '11px';
-	button.style.fontWeight = '500';
-	button.style.letterSpacing = '2px';
-	button.style.textTransform = 'uppercase';
-  }
-
+  btn.style.minWidth = btn.offsetWidth + 'px';
+  btn.style.whiteSpace = 'nowrap';
   btn.disabled = true;
   btn.innerText = 'Sending...';
-  applyFont(btn);
-
-  var url = 'https://script.google.com/macros/s/AKfycby2Opq2pa_0eX4HqTFexPgdwObFBmWHWsrSBVMx8Fwvr7RHKu1H_-EodKg_jnAnE6WA/exec';
-
+  
+  var url = 'https://script.google.com/macros/s/AKfycbyNatI1LkrtZHiIwviLjODkVsO194MRpeMvxjfh78kAT6Cu3LrXmR8-xqwZNy2m8GAbfQ/exec';
+  
   var form = document.createElement('form');
   form.method = 'POST';
   form.action = url;
   form.target = 'hidden_iframe';
-
+  
   var input = document.createElement('input');
   input.type = 'hidden';
   input.name = 'email';
   input.value = email;
   form.appendChild(input);
-
+  
   var iframe = document.createElement('iframe');
   iframe.name = 'hidden_iframe';
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
   document.body.appendChild(form);
   form.submit();
-
+  
   setTimeout(function() {
     btn.innerText = 'You are in';
     btn.style.backgroundColor = '#4a7c59';
     btn.style.color = '#ffffff';
-    applyFont(btn);
     document.body.removeChild(form);
     document.body.removeChild(iframe);
   }, 2000);
