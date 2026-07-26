@@ -136,7 +136,6 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
   if (!email) return;
   
   var btn = this.querySelector('button[type="submit"]');
-  btn.disabled = true;
   btn.style.minWidth = btn.offsetWidth + 'px';
   btn.style.whiteSpace = 'nowrap';
   btn.style.fontFamily = window.getComputedStyle(btn).fontFamily;
@@ -144,6 +143,7 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
   btn.style.fontWeight = window.getComputedStyle(btn).fontWeight;
   btn.style.letterSpacing = window.getComputedStyle(btn).letterSpacing;
   btn.style.textTransform = window.getComputedStyle(btn).textTransform;
+  btn.disabled = true;
   btn.innerText = 'Sending...';
   
   var url = 'https://script.google.com/macros/s/AKfycby2Opq2pa_0eX4HqTFexPgdwObFBmWHWsrSBVMx8Fwvr7RHKu1H_-EodKg_jnAnE6WA/exec';
