@@ -137,23 +137,15 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
   if (!email) return;
 
   var btn = this.querySelector('button[type="submit"]');
-
-  // Capture styles AFTER btn is declared
-  var capturedFont = window.getComputedStyle(btn).fontFamily;
-  var capturedSize = window.getComputedStyle(btn).fontSize;
-  var capturedWeight = window.getComputedStyle(btn).fontWeight;
-  var capturedSpacing = window.getComputedStyle(btn).letterSpacing;
-  var capturedTransform = window.getComputedStyle(btn).textTransform;
-  var capturedWidth = btn.offsetWidth + 'px';
-
+	
   function applyFont(button) {
-    button.style.minWidth = capturedWidth;
-    button.style.whiteSpace = 'nowrap';
-    button.style.fontFamily = capturedFont;
-    button.style.fontSize = capturedSize;
-    button.style.fontWeight = capturedWeight;
-    button.style.letterSpacing = capturedSpacing;
-    button.style.textTransform = capturedTransform;
+	button.style.minWidth = capturedWidth;
+	button.style.whiteSpace = 'nowrap';
+	button.style.fontFamily = '"Cormorant SC", serif';
+	button.style.fontSize = '11px';
+	button.style.fontWeight = '500';
+	button.style.letterSpacing = '2px';
+	button.style.textTransform = 'uppercase';
   }
 
   btn.disabled = true;
