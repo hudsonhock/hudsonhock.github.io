@@ -137,6 +137,8 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
   
   var btn = this.querySelector('button[type="submit"]');
   btn.disabled = true;
+  btn.style.minWidth = btn.offsetWidth + 'px';
+  btn.style.whiteSpace = 'nowrap';
   btn.innerText = 'Sending...';
   
   var url = 'https://script.google.com/macros/s/AKfycby2Opq2pa_0eX4HqTFexPgdwObFBmWHWsrSBVMx8Fwvr7RHKu1H_-EodKg_jnAnE6WA/exec';
