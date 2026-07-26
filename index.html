@@ -160,6 +160,8 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
   form.submit();
   
   setTimeout(function() {
+	btn.style.minWidth = btn.offsetWidth + 'px';
+	btn.style.whiteSpace = 'nowrap';
     btn.innerText = 'You are in';
     btn.style.backgroundColor = '#4a7c59';
     btn.style.color = '#ffffff';
