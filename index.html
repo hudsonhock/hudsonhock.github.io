@@ -132,19 +132,32 @@ n.innerHTML='<style>#ncx-local-notice{position:fixed;left:50%;bottom:18px;transf
 	<script>
 document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListener('submit', function(e) {
   e.preventDefault();
+	// Capture styles first
+	var capturedFont = window.getComputedStyle(btn).fontFamily;
+	var capturedSize = window.getComputedStyle(btn).fontSize;
+	var capturedWeight = window.getComputedStyle(btn).fontWeight;
+	var capturedSpacing = window.getComputedStyle(btn).letterSpacing;
+	var capturedTransform = window.getComputedStyle(btn).textTransform;
+	var capturedWidth = btn.offsetWidth + 'px';
+
+	// Helper function to apply captured styles
+	function applyFont(button) {
+	  button.style.minWidth = capturedWidth;
+	  button.style.whiteSpace = 'nowrap';
+	  button.style.fontFamily = capturedFont;
+	  button.style.fontSize = capturedSize;
+	  button.style.fontWeight = capturedWeight;
+	  button.style.letterSpacing = capturedSpacing;
+	  button.style.textTransform = capturedTransform;
+	}
+	
   var email = this.querySelector('input[type="email"]').value;
   if (!email) return;
   
   var btn = this.querySelector('button[type="submit"]');
-  btn.style.minWidth = btn.offsetWidth + 'px';
-  btn.style.whiteSpace = 'nowrap';
-  btn.style.fontFamily = window.getComputedStyle(btn).fontFamily;
-  btn.style.fontSize = window.getComputedStyle(btn).fontSize;
-  btn.style.fontWeight = window.getComputedStyle(btn).fontWeight;
-  btn.style.letterSpacing = window.getComputedStyle(btn).letterSpacing;
-  btn.style.textTransform = window.getComputedStyle(btn).textTransform;
   btn.disabled = true;
   btn.innerText = 'Sending...';
+  applyFont(btn);
   
   var url = 'https://script.google.com/macros/s/AKfycby2Opq2pa_0eX4HqTFexPgdwObFBmWHWsrSBVMx8Fwvr7RHKu1H_-EodKg_jnAnE6WA/exec';
   
@@ -170,6 +183,7 @@ document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListen
     btn.innerText = 'You are in';
     btn.style.backgroundColor = '#4a7c59';
     btn.style.color = '#ffffff';
+	applyFont(btn);
     document.body.removeChild(form);
     document.body.removeChild(iframe);
   }, 2000);
