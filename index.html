@@ -129,5 +129,34 @@ n.innerHTML='<style>#ncx-local-notice{position:fixed;left:50%;bottom:18px;transf
 +'<button class="ncx-x" type="button" aria-label="Dismiss" onclick="this.parentNode.remove()">✕</button>';
 (document.body||document.documentElement).appendChild(n);
 }catch(e){}})();</script>
+	<script>
+document.querySelector('form[data-framer-name="Wishlist Email"]').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = this.querySelector('input[type="email"]').value;
+  if (!email) return;
+  var btn = this.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.innerText = 'Sending...';
+  fetch('https://script.google.com/macros/s/AKfycbyNatI1LkrtZHiIwviLjODkVsO194MRpeMvxjfh78kAT6Cu3LrXmR8-xqwZNy2m8GAbfQ/exec', {
+    method: 'POST',
+    body: JSON.stringify({ email: email }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.result === 'success') {
+      btn.innerText = 'You are in';
+      btn.style.backgroundColor = '#4a7c59';
+    } else {
+      btn.innerText = 'Try again';
+      btn.disabled = false;
+    }
+  })
+  .catch(function() {
+    btn.innerText = 'Try again';
+    btn.disabled = false;
+  });
+});
+</script>
 <!-- /NoCodeXport Local Notice --></body>
 </html>
