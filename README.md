@@ -3,7 +3,7 @@
 Source: https://defiant-humor-376225.framer.app
 Mode: full-site
 Pages: 1
-Assets: 89
+Assets: 88
 
 ## Structure
 
